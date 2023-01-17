@@ -73,9 +73,6 @@ function slideNext() {
                         
 }
 
-up.addEventListener("click", slideNext);
-
-
 
 function slidePrev() {
 
@@ -97,4 +94,17 @@ function slidePrev() {
 
 }
 
-down.addEventListener('click', slidePrev);
+// Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo 
+// (3 secondi) l'immagine attiva dovrà cambiare alla successiva.
+
+let autoplay = setInterval(slideNext,3000);
+
+up.addEventListener("click", function() {
+  clearInterval(autoplay);
+  slideNext();
+});
+
+down.addEventListener('click', function() {
+  clearInterval(autoplay);
+  slidePrev();
+});
