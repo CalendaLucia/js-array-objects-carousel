@@ -24,7 +24,6 @@ const images = [
 ];
 
 const container = document.getElementById('container');
-
 const thumbbox = document.createElement('div');
 thumbbox.id = "thumbbox";
 container.appendChild(thumbbox);
@@ -51,25 +50,26 @@ container.appendChild(slider);
 
 const up = document.querySelector('.up');
 const down = document.querySelector('.down');
+const selected = document.querySelectorAll('.box');
 let current = 0;
-let selected = 0;
+selected[current].classList.add('selected');
 
 function slideNext() {
+  
+    selected[current].classList.remove('selected');
     current++;
- 
-    if(current > images.length - 1) {
+    
+    if(current > images.length - 1  ) {
         current = 0;
     }
+    selected[current].classList.add('selected');
 
     const slider = document.getElementById("slider");
     slider.innerHTML = `<img class="slide" src="${images[current].image}">
                               <span class="text">
                                 <h5>${images[current].title}</h5>
                                 <p class="paragraph">${images[current].text}</p>
-                              </span>`;
-
-                            //   const thumbs = document.querySelectorAll('.thumb');
-                            //   thumbs[selected].classList.add('selected');
+                              </span>`;                  
                         
 }
 
@@ -78,13 +78,15 @@ up.addEventListener("click", slideNext);
 
 
 function slidePrev() {
-    current--;
 
-  
+    selected[current].classList.remove('selected');
+    current--;
 
     if(current < 0) {
         current = images.length - 1;
     }
+    selected[current].classList.add('selected');
+  
     const slider = document.getElementById("slider");
     slider.innerHTML = `<img class="slide" src="${images[current].image}">
     <span class="text">
