@@ -25,38 +25,37 @@ const images = [
 
 const container = document.getElementById('container');
 
+const thumbbox = document.createElement('div');
+thumbbox.id = "thumbbox";
+container.appendChild(thumbbox);
+
 for (let i = 0; i < images.length ; i++) {
-     
-    container.innerHTML += `<div id="slider">
-                              <img class="slide" src="${images[i].image}">
-                              <span class="text">
-                                <h5>${images[i].title}</h5>
-                                <p class="paragraph">${images[i].text}</p>
-                              </span>
-                            </div>
-                            <div id="thumbox">
-                              <img class="thumb " src="${images[0].image}">
-                              <img class="thumb" src="${images[1].image}">
-                              <img class="thumb" src="${images[2].image}">
-                              <img class="thumb" src="${images[3].image}">
-                              <img class="thumb" src="${images[4].image}">
-                            </div>
-                            `
     
-};
+//creare un unico elemento slider
+const slider = document.createElement('div');
+slider.id = "slider";
+container.appendChild(slider);
+    //aggiungere le immagini all'interno dell'elemento slider creato
+    slider.innerHTML += `<img class="slide" src="${images[i].image}">
+                           <span class="text">
+                             <h5>${images[i].title}</h5>
+                             <p class="paragraph">${images[i].text}</p>
+                           </span>`;
+
+    thumbbox.innerHTML += `<div class="box">
+                              <img class="thumb" src="${images[i].image}">
+                          </div>`;                       
+}
+
+
 
 const up = document.querySelector('.up');
 const down = document.querySelector('.down');
-
 let current = 0;
+let selected = 0;
 
 function slideNext() {
     current++;
-
-
-
- 
-
  
     if(current > images.length - 1) {
         current = 0;
@@ -68,6 +67,9 @@ function slideNext() {
                                 <h5>${images[current].title}</h5>
                                 <p class="paragraph">${images[current].text}</p>
                               </span>`;
+
+                            //   const thumbs = document.querySelectorAll('.thumb');
+                            //   thumbs[selected].classList.add('selected');
                         
 }
 
