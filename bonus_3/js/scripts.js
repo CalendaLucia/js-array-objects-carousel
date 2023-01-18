@@ -91,8 +91,6 @@ function slidePrev() {
     </span>`;
 }
 
-// Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo 
-// (3 secondi) l'immagine attiva dovrà cambiare alla successiva.
 
 up.addEventListener("click", function() {
   slideNext();
